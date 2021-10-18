@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Online Grocery Shopping App</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<style>
+nav{
+background-color:#3440eb;
+padding:20px;
+margin-top:-10px;
+margin-left:-10px;
+margin-right:-10px;
+
+}
+nav h1{
+font-size:30px;
+color:white;
+text-align:center;
+}
+.table{
+margin-top:50px;
+width:60%;
+margin-left:300px;
+
+}
+h3
+{
+margin-left:300px;
+margin-top:20px;
+color:magenta;
+}
+.h
+{
+margin-left:300px;
+margin-top:20px;
+
+}
+</style>
+</head>
+<body>
+ <div th:insert="~{header::header}"></div>
+ <h3 th:inline="text" class="title">Welcome!! [[${customer}]]</h3>
+ 
+  <h5 class="h">Your Details</h5>
+<table class="table table-bordered table-striped">
+ <thead>
+  <tr>
+    <th>Name</th>
+    <th> Contact</th>
+    <th>Action</th>
+    </tr>
+    </thead >
+    <tbody>
+      <tr th:each="a:${customers}">
+       <td th:text="${a.name}"></td>
+       <td th:text="${a.contact}"></td>
+       <td>
+           <a th:href="@{updcust(customer=${a.name})}" class="btn btn-warning">
+       Edit details
+       </a>
+       <a th:href="@{shop(customer=${a.name})}" class="btn btn-info">
+       Shop
+       </a>
+     
+       </td>
+       </tr>
+    </tbody>
+ </table>
+ 
+</body>
+</html>
+
